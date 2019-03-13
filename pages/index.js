@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const Index = () => (
+const Index = ({ user }) => (
   <div style={{ padding: "10px 45px" }}>
     <Head>
       <title>Index page</title>
@@ -10,7 +10,13 @@ const Index = () => (
       />
     </Head>
     <p>Content on Index page</p>
+    <p>Email: {user.email}</p>
   </div>
 );
 
+Index.getInitialProps = async ({ query }) => {
+  return {
+    user: query.user
+  };
+};
 export default Index;
